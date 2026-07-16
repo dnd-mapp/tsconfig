@@ -1,0 +1,14 @@
+*
+
+!*/
+
+!*.json
+!*.yaml
+!*.yml
+!*.mjs
+
+pnpm-lock.yaml
+node_modules/
+dist/
+
+.idea/
