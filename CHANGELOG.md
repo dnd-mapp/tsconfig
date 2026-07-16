@@ -17,3 +17,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `typescript` and `@types/node` peer dependencies.
 - `exports` map exposing the `configs/*.json` presets as extendable subpaths.
 - `engines.node` field requiring Node.js `>=24.18.0`.
+
+[1.0.0]: https://github.com/dnd-mapp/tsconfig/releases/tag/v1.0.0

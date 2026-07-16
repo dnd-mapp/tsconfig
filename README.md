@@ -1,9 +1,9 @@
 # @dnd-mapp/tsconfig
 
 [![Push to main](https://github.com/dnd-mapp/tsconfig/actions/workflows/push-main.yml/badge.svg)](https://github.com/dnd-mapp/tsconfig/actions/workflows/push-main.yml)
-[![npm version](https://img.shields.io/npm/v/@dnd-mapp/tsconfig.svg)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
-[![npm downloads](https://img.shields.io/npm/dm/@dnd-mapp/tsconfig.svg)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
-[![License: MIT](https://img.shields.io/npm/l/@dnd-mapp/tsconfig.svg)](LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/@dnd-mapp/tsconfig)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
+[![NPM Downloads](https://img.shields.io/npm/dw/@dnd-mapp/tsconfig)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
+[![NPM License](https://img.shields.io/npm/l/@dnd-mapp/tsconfig)](LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
 
 Shared, strict `tsconfig.json` presets for Node.js, NestJS, and Angular projects.
