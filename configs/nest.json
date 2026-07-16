@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": ["./node.json"],
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "erasableSyntaxOnly": false,
+        "experimentalDecorators": true,
+        "incremental": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "strictPropertyInitialization": false
+    }
+}

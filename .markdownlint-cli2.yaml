@@ -1,0 +1,6 @@
+gitignore: true
+config:
+    default: true
+    # Line length is intentionally unconstrained for prose, matching .editorconfig's
+    # max_line_length = off for *.md.
+    MD013: false

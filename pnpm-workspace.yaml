@@ -1,0 +1,11 @@
+# Dependency Resolution
+minimumReleaseAge: 4320
+trustPolicy: no-downgrade
+trustPolicyExclude: '4320'
+
+# CLI Settings
+engineStrict: true
+pmOnFail: error
+
+# Other Settings
+savePrefix: '~'

@@ -1,0 +1,7 @@
+{
+    "arrowParens": "always",
+    "plugins": ["prettier-plugin-organize-imports"],
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "trailingComma": "all"
+}
