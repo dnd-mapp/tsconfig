@@ -1,0 +1,72 @@
+{
+  "name": "@dnd-mapp/tsconfig",
+  "description": "Shared, strict tsconfig.json presets for Node.js, NestJS, and Angular projects.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "NoNamer777",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnd-mapp/tsconfig.git"
+  },
+  "homepage": "https://github.com/dnd-mapp/tsconfig#readme",
+  "bugs": "https://github.com/dnd-mapp/tsconfig/issues",
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "config",
+    "node",
+    "nestjs",
+    "angular",
+    "strict"
+  ],
+  "files": [
+    "**/*"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./configs/*.json": "./configs/*.json"
+  },
+  "scripts": {
+    "prepare": "husky || true",
+    "prepare-release-notes": "node scripts/prepare-release-notes.mjs",
+    "prepublishOnly": "node scripts/pre-publish-only.mjs",
+    "lint-md": "markdownlint-cli2 \"**/*.md\"",
+    "format": "prettier -w .",
+    "format-check": "prettier -l ."
+  },
+  "engines": {
+    "node": ">=24.18.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.18.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.13.0",
+      "onFail": "error"
+    }
+  },
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "peerDependencies": {
+    "@types/node": ">=24",
+    "typescript": ">=5.9"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "~21.2.1",
+    "@commitlint/config-conventional": "~21.2.0",
+    "@types/node": "~24.13.3",
+    "husky": "~9.1.7",
+    "lint-staged": "~17.0.8",
+    "markdownlint-cli2": "~0.23.0",
+    "prettier": "~3.9.5",
+    "prettier-plugin-organize-imports": "~4.3.0",
+    "typescript": "~5.9.3"
+  }
+}
