@@ -1,0 +1,28 @@
+name: Push to main
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: read
+
+jobs:
+    ci:
+        name: Continuous Integration
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+            - name: Setup workspace
+              uses: ./.github/actions/setup-workspace
+
+            - name: Check formatting
+              shell: bash
+              run: pnpm format-check
+
+            - name: Lint markdown
+              shell: bash
+              run: pnpm lint-md
