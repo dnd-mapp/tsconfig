@@ -6,3 +6,5 @@ dist/
 .husky/_/
 
 .claude/artifacts/
+
+TODO.md
