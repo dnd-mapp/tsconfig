@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-07-17
+
 ### Changed
 
 - Package is now published privately to GitHub Package Registry (`npm.pkg.github.com`), scoped to the `dnd-mapp` org, instead of the public npm registry. Installing it now requires a GitHub token with `read:packages` scope, see [README.md](README.md#installation).
@@ -27,3 +29,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `engines.node` field requiring Node.js `>=24.18.0`.
 
 [1.0.0]: https://github.com/dnd-mapp/tsconfig/releases/tag/v1.0.0
+[2.0.0]: https://github.com/dnd-mapp/tsconfig/releases/tag/v2.0.0
