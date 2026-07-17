@@ -1,9 +1,7 @@
 # @dnd-mapp/tsconfig
 
 [![Push to main](https://github.com/dnd-mapp/tsconfig/actions/workflows/push-main.yml/badge.svg)](https://github.com/dnd-mapp/tsconfig/actions/workflows/push-main.yml)
-[![NPM Version](https://img.shields.io/npm/v/@dnd-mapp/tsconfig)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
-[![NPM Downloads](https://img.shields.io/npm/dw/@dnd-mapp/tsconfig)](https://www.npmjs.com/package/@dnd-mapp/tsconfig)
-[![NPM License](https://img.shields.io/npm/l/@dnd-mapp/tsconfig)](LICENSE)
+[![License](https://img.shields.io/github/license/dnd-mapp/tsconfig)](LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
 
 Shared, strict `tsconfig.json` presets for Node.js, NestJS, and Angular projects.
@@ -21,6 +19,30 @@ Shared, strict `tsconfig.json` presets for Node.js, NestJS, and Angular projects
 - [@types/node](https://www.npmjs.com/package/@types/node) `>=24` (when using `node.json`, `nest.json`, or `angular.json`)
 
 ## Installation
+
+This package is private to the `dnd-mapp` org and published to [GitHub Package Registry](https://npm.pkg.github.com), not the public npm registry. Installing it requires a GitHub token with `read:packages` scope and a `.npmrc` entry mapping the `@dnd-mapp` scope to GitHub Package Registry.
+
+In the consuming project's `.npmrc` (safe to commit, contains no credential):
+
+```ini
+@dnd-mapp:registry=https://npm.pkg.github.com
+```
+
+The auth token itself must **not** go in that project-level `.npmrc`. pnpm refuses to expand env vars in auth settings from a committed `.npmrc`, specifically to stop a malicious commit from exfiltrating secrets. Instead, set it in your user-level `~/.npmrc`:
+
+```ini
+//npm.pkg.github.com/:_authToken=<your token>
+```
+
+or via:
+
+```shell
+pnpm config set "//npm.pkg.github.com/:_authToken" "<your token>"
+```
+
+Use a GitHub token with `read:packages` scope, for example, a [personal access token](https://github.com/settings/tokens). If installing from another GitHub Actions workflow within the `dnd-mapp` org, `GITHUB_TOKEN` works instead (with `packages: read` permission granted), set the same way via `pnpm config set` in that workflow, not by committing it.
+
+Then install as usual:
 
 ```shell
 pnpm add -D @dnd-mapp/tsconfig typescript @types/node
