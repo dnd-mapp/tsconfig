@@ -16,16 +16,8 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Setup workspace
-              uses: ./.github/actions/setup-workspace
-
-            - name: Check formatting
-              shell: bash
-              run: pnpm format-check
-
-            - name: Lint markdown
-              shell: bash
-              run: pnpm lint-md
+            - name: Continuous Integration
+              uses: ./.github/actions/ci
 
             - name: Lint commit messages
               shell: bash
