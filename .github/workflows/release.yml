@@ -80,7 +80,7 @@ jobs:
               working-directory: dist
               run: |
                   pnpm pack --pack-destination ..
-                  echo "tarball=$(ls ../*.tgz)" >> "$GITHUB_OUTPUT"
+                  echo "tarball=$(realpath ../*.tgz)" >> "$GITHUB_OUTPUT"
 
             - name: Create GitHub release
               shell: bash
