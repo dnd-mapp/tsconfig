@@ -32,41 +32,29 @@ Pushing a tag that fails any of these is caught by the `validate` job in [releas
 
 ## 3. Approve the release
 
-Once `validate` passes, the `release` job waits at the `npm-publish` GitHub Environment for a required reviewer to approve it (see [ADR 0004](../../adr/0004-release-workflow-job-structure.md)). Go to the workflow run under the **Actions** tab and click **Review deployments** to approve it.
+Once `validate` passes, the `release` job waits at the `package-publish` GitHub Environment for a required reviewer to approve it (see [ADR 0004](../../adr/0004-release-workflow-job-structure.md) and [ADR 0005](../../adr/0005-private-github-package-registry.md)). Go to the workflow run under the **Actions** tab and click **Review deployments** to approve it.
 
-Approving lets the job run, which:
+This is the only approval gate in the process. Approving lets the job run, which:
 
 1. Builds the package and packs it into a tarball.
 2. Extracts the matching section of `CHANGELOG.md` into the release notes.
-3. Creates a **draft** GitHub Release for the tag, with that tarball attached.
-4. Stages the npm publish via `pnpm stage publish`, using [trusted publishing](../../../CONTEXT.md) (OIDC), no `NPM_TOKEN` involved.
+3. Creates the GitHub Release for the tag, with that tarball attached, visible immediately.
+4. Publishes the package to GitHub Package Registry using the workflow's own `GITHUB_TOKEN`. There is no separate staging/2FA-approval step: the version is live on GitHub Package Registry as soon as this step completes.
 
-## 4. Approve the staged npm publish
+The release is no longer created as a draft. That existed to keep two separate "this is out" signals (GitHub release, npm registry) in sync while npm's staged publish meant the npm side could lag behind; see [ADR 0005](../../adr/0005-private-github-package-registry.md). With staged publishing gone, both signals land in the same step, so there's nothing left to keep in sync.
 
-Staging is different from publishing (see [ADR 0002](../../adr/0002-staged-and-trusted-publishing.md)). The package now sits in npm's stage queue and won't be installable until you approve it with 2FA, either:
+## 4. First publish only: set the package to private
 
-- **On npmjs.com**: open the package's **Staged Packages** tab and click **Approve**.
-- **Via the CLI**:
+GitHub Package Registry has no way to preset a package's visibility before it exists, so the very first publish creates the package with public visibility (inherited from this repository). Immediately after the first release, an org admin must manually set the package to private:
 
-  ```shell
-  pnpm stage list
-  pnpm stage approve <stage-id>
-  ```
+1. Go to the package's page under the `dnd-mapp` org (**Packages** tab, or `github.com/orgs/dnd-mapp/packages`).
+2. Open **Package settings**.
+3. Under **Danger Zone**, change visibility to **Private**.
 
-If you spot a problem before approving, `pnpm stage reject <stage-id>` discards it instead.
-
-## 5. Publish the draft GitHub Release
-
-Once the npm side has gone live, publish the draft release so it's visible to everyone. Either click **Publish release** on the draft in the **Releases** tab, or:
-
-```shell
-gh release edit vX.Y.Z --draft=false
-```
-
-The two are deliberately independent: the draft is created as soon as the `npm-publish` environment is approved, but it's on you to only make it public once npm has actually approved the staged package too.
+Every subsequent release keeps whatever visibility the package already has, so this is a one-time step, not something to repeat per release.
 
 ## Troubleshooting
 
 - **`validate` fails with a version mismatch**: the tag doesn't match `package.json`'s `version` at the tagged commit. Fix the version, delete the tag, retag, and re-push.
 - **`validate` fails the main-ancestry check**: the tagged commit isn't reachable from `main`. Make sure you tagged a commit that's actually been merged.
-- **The `release` job never seems to start**: check the `npm-publish` environment's "Deployment branches and tags" configuration includes a tag rule matching `v*`. It needs to allow tags, not just the `main` branch.
+- **The `release` job never seems to start**: check the `package-publish` environment's "Deployment branches and tags" configuration includes a tag rule matching `v*`. It needs to allow tags, not just the `main` branch.

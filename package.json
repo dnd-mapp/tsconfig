@@ -51,7 +51,7 @@
   },
   "type": "module",
   "publishConfig": {
-    "access": "public",
+    "registry": "https://npm.pkg.github.com",
     "directory": "dist"
   },
   "peerDependencies": {

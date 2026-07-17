@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Package is now published privately to GitHub Package Registry (`npm.pkg.github.com`), scoped to the `dnd-mapp` org, instead of the public npm registry. Installing it now requires a GitHub token with `read:packages` scope, see [README.md](README.md#installation).
+
+### Removed
+
+- Public npm registry availability. The package is no longer published to npmjs.com.
+
 ## [1.0.0] - 2026-07-17
 
 ### Added

@@ -84,9 +84,10 @@ async function copyConfigsFolder() {
  * - `scripts`: repo-local tooling commands (lint, format, prepare, etc.).
  * - `devEngines`: contributor-facing Node/pnpm version enforcement; unlike `engines`, this
  *   is not meant to constrain consumers and pnpm in particular shouldn't be forced on them.
- * - `publishConfig`: replaced below with a minimal version containing only `access`, since
- *   `publishConfig.directory` (`dist`) is meaningless once the manifest already lives at the
- *   root of the published package.
+ * - `publishConfig`: dropped entirely. `publishConfig.directory` (`dist`) is meaningless once
+ *   the manifest already lives at the root of the published package, and `publishConfig.registry`
+ *   only matters when this repo publishes the package, not to consumers installing it (they
+ *   resolve the `@dnd-mapp` scope via their own `.npmrc`).
  * - `devDependencies`: not needed at install time by consumers.
  *
  * All other fields (including the public `engines` field) are preserved unchanged via the
@@ -103,14 +104,8 @@ async function adjustPackageManifest() {
 
     const packageManifestContents = await readFile(packageManifestPath, { encoding: 'utf8' });
 
-    const { scripts, devEngines, publishConfig, devDependencies, ...rest } = JSON.parse(packageManifestContents);
-
-    const strippedPackageManifest = {
-        ...rest,
-        publishConfig: {
-            access: publishConfig.access,
-        },
-    };
+    const { scripts, devEngines, publishConfig, devDependencies, ...strippedPackageManifest } =
+        JSON.parse(packageManifestContents);
 
     await writeFile(packageManifestPath, JSON.stringify(strippedPackageManifest, null, 2), { encoding: 'utf8' });
 }

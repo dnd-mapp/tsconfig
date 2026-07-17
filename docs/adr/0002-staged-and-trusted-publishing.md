@@ -1,5 +1,7 @@
 # Release publishing uses npm trusted publishing and staged publishing, not a direct token-based publish
 
+> **Superseded by [ADR 0005](0005-private-github-package-registry.md).** The package now publishes to a private GitHub Package Registry instead of the public npm registry, which has no equivalent to either trusted publishing or staged publishing. The reasoning below reflects why the npm-based approach looked the way it did while it was in use.
+
 `release.yml` authenticates to npm via OIDC trusted publishing (no long-lived `NPM_TOKEN`) and submits the package with `pnpm stage publish` rather than `pnpm publish`. This means the workflow can never complete a release unattended: a maintainer must still separately approve the staged version with 2FA (CLI or npmjs.com) before it becomes installable. We chose this combination deliberately, even though it adds a manual step, because trusted publishing alone removes the human-presence guarantee that a token-based publish implicitly had. Staged publishing puts that guarantee back, specifically for CI-originated publishes.
 
 ## Considered options
