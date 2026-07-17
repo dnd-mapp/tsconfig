@@ -38,7 +38,7 @@ This is the only approval gate in the process. Approving lets the job run, which
 
 1. Builds the package and packs it into a tarball.
 2. Extracts the matching section of `CHANGELOG.md` into the release notes.
-3. Creates the GitHub Release for the tag, with that tarball attached, visible immediately.
+3. Creates the GitHub Release for the tag, with that tarball attached, visible immediately, and starts an **Announcements** discussion mirroring the release's title and notes.
 4. Publishes the package to GitHub Package Registry using the workflow's own `GITHUB_TOKEN`. There is no separate staging/2FA-approval step: the version is live on GitHub Package Registry as soon as this step completes.
 
 The release is no longer created as a draft. That existed to keep two separate "this is out" signals (GitHub release, npm registry) in sync while npm's staged publish meant the npm side could lag behind; see [ADR 0005](../../adr/0005-private-github-package-registry.md). With staged publishing gone, both signals land in the same step, so there's nothing left to keep in sync.
