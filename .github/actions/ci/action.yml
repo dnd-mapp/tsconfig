@@ -1,0 +1,18 @@
+name: Continuous Integration
+description: Runs Continuous Integration checks
+
+runs:
+    using: composite
+    steps:
+        - name: Setup workspace
+          uses: dnd-mapp/action-setup-workspace@ec37c34fdb9c3bdd4277af4801cda06f718ff659 # v1.0.0
+          with:
+              install-dependencies: 'false'
+
+        - name: Check formatting
+          shell: bash
+          run: pnpm format-check
+
+        - name: Lint markdown
+          shell: bash
+          run: pnpm lint-md
