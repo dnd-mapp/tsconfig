@@ -5,7 +5,7 @@ How to work on this repository day-to-day. For how to propose a change, see the 
 ## Requirements
 
 - Node.js `24.18.0` (see `devEngines` in [package.json](package.json))
-- pnpm `11.13.0` (see `devEngines` in [package.json](package.json))
+- pnpm `11.13.1` (see `devEngines` in [package.json](package.json))
 
 ## Getting started
 
