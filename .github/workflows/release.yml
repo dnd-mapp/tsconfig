@@ -39,7 +39,9 @@ jobs:
                   fi
 
             - name: Setup workspace
-              uses: dnd-mapp/action-setup-workspace@ec37c34fdb9c3bdd4277af4801cda06f718ff659 # v1.0.0
+              uses: dnd-mapp/action-setup-workspace@d5d3148fe3fbe34055eb006f685f190524c16522 # v2.0.0
+              with:
+                  node-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Check formatting
               shell: bash
@@ -63,7 +65,9 @@ jobs:
               uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
             - name: Setup workspace
-              uses: dnd-mapp/action-setup-workspace@ec37c34fdb9c3bdd4277af4801cda06f718ff659 # v1.0.0
+              uses: dnd-mapp/action-setup-workspace@d5d3148fe3fbe34055eb006f685f190524c16522 # v2.0.0
+              with:
+                  node-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Prepare release notes
               shell: bash
