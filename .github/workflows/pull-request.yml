@@ -18,6 +18,8 @@ jobs:
 
             - name: Continuous Integration
               uses: ./.github/actions/ci
+              with:
+                  node-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Lint commit messages
               shell: bash
