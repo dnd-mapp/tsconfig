@@ -28,7 +28,6 @@
   },
   "scripts": {
     "prepare": "husky || true",
-    "prepare-release-notes": "node scripts/prepare-release-notes.mjs",
     "prepublishOnly": "node scripts/pre-publish-only.mjs",
     "lint-md": "markdownlint-cli2 \"**/*.md\"",
     "format": "prettier -w .",

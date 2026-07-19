@@ -57,4 +57,5 @@ Every subsequent release keeps whatever visibility the package already has, so t
 
 - **`validate` fails with a version mismatch**: the tag doesn't match `package.json`'s `version` at the tagged commit. Fix the version, delete the tag, retag, and re-push.
 - **`validate` fails the main-ancestry check**: the tagged commit isn't reachable from `main`. Make sure you tagged a commit that's actually been merged.
+- **`validate` fails with no matching changelog section**: `CHANGELOG.md` has no `## [X.Y.Z]` heading for the tagged version. Add the section (see step 1) before tagging.
 - **The `release` job never seems to start**: check the `package-publish` environment's "Deployment branches and tags" configuration includes a tag rule matching `v*`. It needs to allow tags, not just the `main` branch.
