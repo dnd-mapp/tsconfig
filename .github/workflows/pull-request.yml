@@ -8,7 +8,7 @@ permissions:
 
 jobs:
     ci:
-        name: Continuous Integration
+        name: CI
         runs-on: ubuntu-22.04
         steps:
             - name: Checkout repository
@@ -16,7 +16,7 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Continuous Integration
+            - name: Run CI checks
               uses: ./.github/actions/ci
               with:
                   node-auth-token: ${{ secrets.GITHUB_TOKEN }}

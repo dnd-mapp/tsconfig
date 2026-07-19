@@ -22,6 +22,6 @@ This also installs the [Husky](https://typicode.github.io/husky) git hooks: `lin
 
 ## Releasing
 
-Version bumps and changelog entries are manual (see [ADR 0003](docs/adr/0003-manual-version-bumping.md)); pushing a `vX.Y.Z` tag on `main` triggers a gated GitHub Actions workflow that stages the npm publish via trusted publishing and drafts a GitHub release.
+Version bumps and changelog entries are manual (see [ADR 0003](docs/adr/0003-manual-version-bumping.md)); pushing a `vX.Y.Z` tag on `main` triggers a gated GitHub Actions workflow that publishes the package to GitHub Package Registry and creates a GitHub release.
 
 See [Releasing a new version](docs/guides/dev/releasing.md) for the full, step-by-step procedure.
