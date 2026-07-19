@@ -38,18 +38,10 @@ jobs:
                       exit 1
                   fi
 
-            - name: Setup workspace
-              uses: dnd-mapp/action-setup-workspace@d5d3148fe3fbe34055eb006f685f190524c16522 # v2.0.0
+            - name: Run CI checks
+              uses: ./.github/actions/ci
               with:
                   node-auth-token: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Check formatting
-              shell: bash
-              run: pnpm format-check
-
-            - name: Lint markdown
-              shell: bash
-              run: pnpm lint-md
 
     release:
         name: Publish release

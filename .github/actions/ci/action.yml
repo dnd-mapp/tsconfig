@@ -1,5 +1,5 @@
-name: Continuous Integration
-description: Runs Continuous Integration checks
+name: CI
+description: Runs CI checks
 
 inputs:
     node-auth-token:
