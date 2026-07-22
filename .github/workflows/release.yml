@@ -14,7 +14,7 @@ jobs:
         runs-on: ubuntu-22.04
         steps:
             - name: Checkout repository
-              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
                   fetch-depth: 0
 
@@ -22,7 +22,7 @@ jobs:
               uses: dnd-mapp/action-validate-release-tag@cc07c1784188a50b4d1f931131bb14e480b2dd2a # v1.0.0
 
             - name: Check changelog section
-              uses: dnd-mapp/action-extract-release-notes@2c44a78312de6d557ac11a76c316de06387824ee # v1.0.0
+              uses: dnd-mapp/action-extract-release-notes@381a699441de559457d734eede7ad51ca739ab2c # v1.0.1
               with:
                   write-file: 'false'
               env:
@@ -44,7 +44,7 @@ jobs:
             packages: write
         steps:
             - name: Checkout repository
-              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
             - name: Setup workspace
               uses: dnd-mapp/action-setup-workspace@d5d3148fe3fbe34055eb006f685f190524c16522 # v2.0.0
@@ -52,7 +52,7 @@ jobs:
                   node-auth-token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Prepare release notes
-              uses: dnd-mapp/action-extract-release-notes@2c44a78312de6d557ac11a76c316de06387824ee # v1.0.0
+              uses: dnd-mapp/action-extract-release-notes@381a699441de559457d734eede7ad51ca739ab2c # v1.0.1
               env:
                   RELEASED_VERSION: ${{ github.ref_name }}
 
