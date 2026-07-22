@@ -1,0 +1,74 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "dependencyDashboard": true,
+    "semanticCommits": "enabled",
+    "minimumReleaseAge": "3 days",
+    "schedule": ["before 6am on monday"],
+    "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": false,
+        "schedule": ["before 6am on the first day of the month"]
+    },
+    "vulnerabilityAlerts": {
+        "enabled": true,
+        "automerge": false,
+        "schedule": ["at any time"]
+    },
+    "packageRules": [
+        {
+            "description": "peerDependencies are a deliberate support-range decision, not routine maintenance",
+            "matchManagers": ["npm"],
+            "matchDepTypes": ["peerDependencies"],
+            "enabled": false
+        },
+        {
+            "description": "Group and automerge routine npm devDependency updates",
+            "matchManagers": ["npm"],
+            "matchDepTypes": ["devDependencies"],
+            "matchUpdateTypes": ["minor", "patch"],
+            "groupName": "npm dependencies",
+            "automerge": true,
+            "semanticCommitType": "chore",
+            "semanticCommitScope": "deps"
+        },
+        {
+            "description": "Major npm devDependency updates always need manual review",
+            "matchManagers": ["npm"],
+            "matchDepTypes": ["devDependencies"],
+            "matchUpdateTypes": ["major"],
+            "automerge": false,
+            "semanticCommitType": "chore",
+            "semanticCommitScope": "deps"
+        },
+        {
+            "description": "Group and automerge routine GitHub Actions updates",
+            "matchManagers": ["github-actions"],
+            "matchUpdateTypes": ["minor", "patch", "digest"],
+            "groupName": "github actions dependencies",
+            "automerge": true,
+            "semanticCommitType": "ci",
+            "semanticCommitScope": "deps"
+        },
+        {
+            "description": "Major GitHub Actions updates always need manual review",
+            "matchManagers": ["github-actions"],
+            "matchUpdateTypes": ["major"],
+            "automerge": false,
+            "semanticCommitType": "ci",
+            "semanticCommitScope": "deps"
+        },
+        {
+            "description": "Keep the commitlint CLI and its config in lockstep, never split across PRs",
+            "matchManagers": ["npm"],
+            "matchPackageNames": ["@commitlint/cli", "@commitlint/config-conventional"],
+            "groupName": "commitlint"
+        },
+        {
+            "description": "Keep Prettier and its plugin in lockstep, never split across PRs",
+            "matchManagers": ["npm"],
+            "matchPackageNames": ["prettier", "prettier-plugin-organize-imports"],
+            "groupName": "prettier"
+        }
+    ]
+}
