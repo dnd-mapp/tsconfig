@@ -1,5 +1,7 @@
 # Dependency Resolution
 minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  - '@dnd-mapp/*'
 trustPolicy: no-downgrade
 trustPolicyExclude: '4320'
 

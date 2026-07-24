@@ -1,0 +1,4 @@
+{
+    "$schema": "./node_modules/@dnd-mapp/prepublish/dma-prepublish.schema.json",
+    "assets": ["configs/"]
+}
